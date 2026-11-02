@@ -1,0 +1,27 @@
+{
+  "rules": {
+    "rooms": {
+      "$room": {
+        ".read": "auth != null && $room.matches(/^[a-z0-9]{24}$/)",
+        ".write": "auth != null && $room.matches(/^[a-z0-9]{24}$/)",
+        "kid": {
+          "view": {
+            "state": { ".validate": "newData.isString() && newData.val().length < 300000" },
+            "task": { ".validate": "newData.isString() && newData.val().length < 5000" }
+          }
+        },
+        "coach": {
+          "assign": {
+            "c": { ".validate": "newData.isString() && newData.val().length < 320000" }
+          }
+        },
+        "tasks": {
+          "$id": { ".validate": "$id.matches(/^u[a-z0-9]{6,16}$/) && newData.isString() && newData.val().length < 320000" }
+        },
+        "log": {
+          "$entry": { ".validate": "newData.hasChildren(['id', 'ok', 'at'])" }
+        }
+      }
+    }
+  }
+}

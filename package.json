@@ -1,0 +1,13 @@
+{
+  "name": "mathbench",
+  "private": true,
+  "description": "Virtual math manipulatives with practice tasks and a live parent view",
+  "scripts": {
+    "build": "sh build.sh",
+    "test": "sh build.sh && node test/run.js && node test/live.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0",
+    "qrcode-generator": "1.4.4"
+  }
+}
